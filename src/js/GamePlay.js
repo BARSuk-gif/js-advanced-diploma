@@ -54,7 +54,7 @@ export default class GamePlay {
     for (let i = 0; i < this.boardSize ** 2; i += 1) {
       const cellEl = document.createElement('div');
       const tileType = calcTileType(i, this.boardSize);
-      cellEl.style.backgroundImage = `url('/img/${theme}/map-tile-${tileType}.png')`;
+      cellEl.style.backgroundImage = `url('./img/${theme}/map-tile-${tileType}.png')`;
       cellEl.classList.add('cell', 'map-tile', `map-tile-${tileType}`);
       cellEl.addEventListener('mouseenter', event => this.onCellEnter(event));
       cellEl.addEventListener('mouseleave', event => this.onCellLeave(event));
