@@ -1,4 +1,4 @@
-import { calcHealthLevel, calcTileType } from './utils';
+import { calcHealthLevel, calcTileType } from './utils.js';
 
 export default class GamePlay {
   constructor() {
@@ -29,15 +29,15 @@ export default class GamePlay {
   drawUi(theme) {
     this.checkBinding();
 
-    this.container.innerHTML = `
+    this.container.innerHTML = `      
       <div class="controls">
         <button data-id="action-restart" class="btn">New Game</button>
         <button data-id="action-save" class="btn">Save Game</button>
         <button data-id="action-load" class="btn">Load Game</button>
-      </div>
+      </div>    
       <div class="board-container">
         <div data-id="board" class="board"></div>
-      </div>
+      </div>  
     `;
 
     this.newGameEl = this.container.querySelector('[data-id=action-restart]');
@@ -53,7 +53,9 @@ export default class GamePlay {
     this.boardEl.classList.add(theme);
     for (let i = 0; i < this.boardSize ** 2; i += 1) {
       const cellEl = document.createElement('div');
-      cellEl.classList.add('cell', 'map-tile', `map-tile-${calcTileType(i, this.boardSize)}`);
+      const tileType = calcTileType(i, this.boardSize);
+      cellEl.style.backgroundImage = `url('/img/${theme}/map-tile-${tileType}.png')`;
+      cellEl.classList.add('cell', 'map-tile', `map-tile-${tileType}`);
       cellEl.addEventListener('mouseenter', event => this.onCellEnter(event));
       cellEl.addEventListener('mouseleave', event => this.onCellLeave(event));
       cellEl.addEventListener('click', event => this.onCellClick(event));
@@ -148,12 +150,12 @@ export default class GamePlay {
   onCellEnter(event) {
     event.preventDefault();
     const index = this.cells.indexOf(event.currentTarget);
-    this.cellEnterListeners.forEach(o => o.call(null, index));
+    this.cellEnterListeners.forEach(o => o.call(null, index));   
   }
 
   onCellLeave(event) {
     event.preventDefault();
-    const index = this.cells.indexOf(event.currentTarget);
+    const index = this.cells.indexOf(event.currentTarget);    
     this.cellLeaveListeners.forEach(o => o.call(null, index));
   }
 
