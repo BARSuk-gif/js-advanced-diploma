@@ -40,7 +40,7 @@
     "eslint-plugin-jest": "^29.15.4",
     "globals": "^17.7.0",
     "html-loader": "^5.1.0",
-    "html-webpack-plugin": "^5.6.7",
+    "html-webpack-plugin": "^5.6.8",
     "image-minimizer-webpack-plugin": "^5.0.0",
     "image-webpack-loader": "^8.1.0",
     "jest": "^30.4.2",
