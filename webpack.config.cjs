@@ -65,7 +65,9 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'public', to: '.' }
+        { from: 'public', to: '.' },
+        { from: 'src/css', to: 'css' },
+        { from: 'src/img', to: 'img' }
       ]
     })
   ],
